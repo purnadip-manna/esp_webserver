@@ -2,8 +2,8 @@
 #include <ESP8266WebServer.h>
 
 // Wifi network credentials
-const char* ssid     = "DILIP MANNA"; // Name of the wifi
-const char* password = "#@purna@#";  // Password of the wifi
+const char* ssid     = "WifiName"; // Name of the wifi
+const char* password = "wifiPassword";  // Password of the wifi
 
 // Set web server port number to 80
 WiFiServer server(80);
@@ -112,7 +112,7 @@ void loop(){
            dXNlcjpwYXNz = 'user:pass' (user:pass) base64 encode
            Finding the right credential string, then loads web page
         */
-          if(header.indexOf("UHVybmFkaXA6cHVybmFkaXBA") >= 0) // password authentication...
+          if(header.indexOf("dXNlcjpwYXNz") >= 0) // Basic password authentication...
           {
             client.println("HTTP/1.1 200 OK");
             client.println("Content-type:text/html");
