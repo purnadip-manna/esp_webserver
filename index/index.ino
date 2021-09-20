@@ -3,7 +3,7 @@
 
 // Wifi network credentials
 const char* ssid     = "WifiName"; // Name of the wifi
-const char* password = "wifiPassword";  // Password of the wifi
+const char* password = "WifiPassword";  // Password of the wifi
 
 // Set web server port number to 80
 WiFiServer server(80);
@@ -34,22 +34,22 @@ const int D0 = 16;
 const int D1 = 5;
 const int D2 = 4;
 const int D3 = 0;
-const int D4 = 2;
+//const int D4 = 2;
 const int D5 = 14;
 const int D6 = 12;
 const int D7 = 13;
 const int D8 = 15;
 
 // Status variables of GPIO pins
-String statusD0 = "OFF";
-String statusD1 = "OFF";
-String statusD2 = "OFF";
-String statusD3 = "OFF";
-String statusD4 = "OFF";
-String statusD5 = "OFF";
-String statusD6 = "OFF";
-String statusD7 = "OFF";
-String statusD8 = "OFF";
+String statusD0 = "off";
+String statusD1 = "off";
+String statusD2 = "off";
+String statusD3 = "off";
+String statusD4 = "off";
+String statusD5 = "off";
+String statusD6 = "off";
+String statusD7 = "off";
+String statusD8 = "off";
 
 
 // Current time
@@ -67,7 +67,7 @@ void setup() {
   pinMode(D1, OUTPUT);
   pinMode(D2, OUTPUT);
   pinMode(D3, OUTPUT);
-  pinMode(D4, OUTPUT);
+  //pinMode(D4, OUTPUT);
   pinMode(D5, OUTPUT);
   pinMode(D6, OUTPUT);
   pinMode(D7, OUTPUT);
@@ -112,7 +112,7 @@ void loop(){
            dXNlcjpwYXNz = 'user:pass' (user:pass) base64 encode
            Finding the right credential string, then loads web page
         */
-          if(header.indexOf("dXNlcjpwYXNz") >= 0) // Basic password authentication...
+          if(header.indexOf("UHVybmFkaXA6cHVybmFkaXBA") >= 0) // password authentication...
           {
             client.println("HTTP/1.1 200 OK");
             client.println("Content-type:text/html");
@@ -129,14 +129,14 @@ void loop(){
               Serial.println("Turning on PIN : 0");
               client.print("ok");
               digitalWrite(D0, HIGH);
-              statusD0 = "ON";
+              statusD0 = "on";
             }
             
             else if (header.indexOf("GET /off/0") >= 0) {
               Serial.println("Turning off PIN : 0");
               client.print("ok");
               digitalWrite(D0, LOW);
-              statusD0 = "OFF";
+              statusD0 = "off";
             }
 
             // Pin D1 (ON/OFF) ----------------------------------------
@@ -144,14 +144,14 @@ void loop(){
               Serial.println("Turning on PIN : 1");
               client.print("ok");
               digitalWrite(D1, HIGH);
-              statusD1 = "ON";
+              statusD1 = "on";
             }
             
             else if (header.indexOf("GET /off/1") >= 0) {
               Serial.println("Turning off PIN : 1");
               client.print("ok");
               digitalWrite(D1, LOW);
-              statusD1 = "OFF";
+              statusD1 = "off";
             }
 
             // Pin D2 (ON/OFF) ----------------------------------------
@@ -159,14 +159,14 @@ void loop(){
               Serial.println("Turning on PIN : 2");
               client.print("ok");
               digitalWrite(D2, HIGH);
-              statusD2 = "ON";
+              statusD2 = "on";
             }
             
             else if (header.indexOf("GET /off/2") >= 0) {
               Serial.println("Turning off PIN : 2");
               client.print("ok");
               digitalWrite(D2, LOW);
-              statusD2 = "OFF";
+              statusD2 = "off";
             }
 
             // Pin D3 (ON/OFF) ----------------------------------------
@@ -174,44 +174,44 @@ void loop(){
               Serial.println("Turning on PIN : 3");
               client.print("ok");
               digitalWrite(D3, HIGH);
-              statusD3 = "ON";
+              statusD3 = "on";
             }
             
             else if (header.indexOf("GET /off/3") >= 0) {
               Serial.println("Turning off PIN : 3");
               client.print("ok");
               digitalWrite(D3, LOW);
-              statusD3 = "OFF";
+              statusD3 = "off";
             }
 
             // Pin D4 (ON/OFF) ----------------------------------------
-            else if (header.indexOf("GET /on/4") >= 0) {
-              Serial.println("Turning on PIN : 4");
-              client.print("ok");
-              digitalWrite(D4, HIGH);
-              statusD4 = "ON";
-            }
-            
-            else if (header.indexOf("GET /off/4") >= 0) {
-              Serial.println("Turning off PIN : 4");
-              client.print("ok");
-              digitalWrite(D4, LOW);
-              statusD4 = "OFF";
-            }
+//            else if (header.indexOf("GET /on/4") >= 0) {
+//              Serial.println("Turning on PIN : 4");
+//              client.print("ok");
+//              digitalWrite(D4, HIGH);
+//              statusD4 = "on";
+//            }
+//            
+//            else if (header.indexOf("GET /off/4") >= 0) {
+//              Serial.println("Turning off PIN : 4");
+//              client.print("ok");
+//              digitalWrite(D4, LOW);
+//              statusD4 = "off";
+//            }
 
             // Pin D5 (ON/OFF) ----------------------------------------
             else if (header.indexOf("GET /on/5") >= 0) {
               Serial.println("Turning on PIN : 5");
               client.print("ok");
               digitalWrite(D5, HIGH);
-              statusD5 = "ON";
+              statusD5 = "on";
             }
             
             else if (header.indexOf("GET /off/5") >= 0) {
               Serial.println("Turning off PIN : 5");
               client.print("ok");
               digitalWrite(D5, LOW);
-              statusD5 = "OFF";
+              statusD5 = "off";
             }
 
             // Pin D6 (ON/OFF) ----------------------------------------
@@ -219,14 +219,14 @@ void loop(){
               Serial.println("Turning on PIN : 6");
               client.print("ok");
               digitalWrite(D6, HIGH);
-              statusD6 = "ON";
+              statusD6 = "on";
             }
             
             else if (header.indexOf("GET /off/6") >= 0) {
               Serial.println("Turning off PIN : 6");
               client.print("ok");
               digitalWrite(D6, LOW);
-              statusD6 = "OFF";
+              statusD6 = "off";
             }
 
             // Pin D7 (ON/OFF) ----------------------------------------
@@ -234,14 +234,14 @@ void loop(){
               Serial.println("Turning on PIN : 7");
               client.print("ok");
               digitalWrite(D7, HIGH);
-              statusD7 = "ON";
+              statusD7 = "on";
             }
             
             else if (header.indexOf("GET /off/7") >= 0) {
               Serial.println("Turning off PIN : 7");
               client.print("ok");
               digitalWrite(D7, LOW);
-              statusD7 = "OFF";
+              statusD7 = "off";
             }
 
             // Pin D8 (ON/OFF) ----------------------------------------
@@ -249,53 +249,53 @@ void loop(){
               Serial.println("Turning on PIN : 8");
               client.print("ok");
               digitalWrite(D8, HIGH);
-              statusD8 = "ON";
+              statusD8 = "on";
             }
             
             else if (header.indexOf("GET /off/8") >= 0) {
               Serial.println("Turning off PIN : 8");
               client.print("ok");
               digitalWrite(D8, LOW);
-              statusD8 = "OFF";
+              statusD8 = "off";
             }
 
             // Get status of GPIO pins ---------------------------------
 
             else if (header.indexOf("GET /status/0") >= 0) {
-              Serial.println("Status of D0:" + statusD0);
-              client.println("Status of D0:" + statusD0);
+              Serial.println(statusD0);
+              client.println(statusD0);
             }
             else if (header.indexOf("GET /status/1") >= 0) {
-              Serial.println("Status of D1:" + statusD1);
-              client.println("Status of D1:" + statusD1);
+              Serial.println(statusD1);
+              client.println(statusD1);
             }
             else if (header.indexOf("GET /status/2") >= 0) {
-              Serial.println("Status of D2:" + statusD2);
-              client.println("Status of D2:" + statusD2);
+              Serial.println(statusD2);
+              client.println(statusD2);
             }
             else if (header.indexOf("GET /status/3") >= 0) {
-              Serial.println("Status of D3:" + statusD3);
-              client.println("Status of D3:" + statusD3);
+              Serial.println(statusD3);
+              client.println(statusD3);
             }
-            else if (header.indexOf("GET /status/4") >= 0) {
-              Serial.println("Status of D4:" + statusD4);
-              client.println("Status of D4:" + statusD4);
-            }
+//            else if (header.indexOf("GET /status/4") >= 0) {
+//              Serial.println(statusD4);
+//              client.println(statusD4);
+//            }
             else if (header.indexOf("GET /status/5") >= 0) {
-              Serial.println("Status of D5:" + statusD5);
-              client.println("Status of D5:" + statusD5);
+              Serial.println(statusD5);
+              client.println(statusD5);
             }
             else if (header.indexOf("GET /status/6") >= 0) {
-              Serial.println("Status of D6:" + statusD6);
-              client.println("Status of D6:" + statusD6);
+              Serial.println(statusD6);
+              client.println(statusD6);
             }
             else if (header.indexOf("GET /status/7") >= 0) {
-              Serial.println("Status of D7:" + statusD7);
-              client.println("Status of D7:" + statusD7);
+              Serial.println(statusD7);
+              client.println(statusD7);
             }
             else if (header.indexOf("GET /status/8") >= 0) {
-              Serial.println("Status of D8:" + statusD8);
-              client.println("Status of D8:" + statusD8);
+              Serial.println(statusD8);
+              client.println(statusD8);
             }
             
             break;
