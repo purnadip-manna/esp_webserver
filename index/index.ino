@@ -4,6 +4,7 @@
 // Wifi network credentials
 const char* ssid     = "WifiName"; // Name of the wifi
 const char* password = "WifiPassword";  // Password of the wifi
+String userPass = "dXNlcm5hbWU6cGFzc3dvcmQ=";  // Base64 encoded string of username:password (For Basic Auth)
 
 // Set web server port number to 80
 WiFiServer server(80);
@@ -18,7 +19,6 @@ String header;
   D1 ==>  5
   D2 ==>  4
   D3 ==>  0
-  D4 ==>  2
   D5 ==> 14
   D6 ==> 12
   D7 ==> 13
@@ -34,7 +34,6 @@ const int D0 = 16;
 const int D1 = 5;
 const int D2 = 4;
 const int D3 = 0;
-//const int D4 = 2;
 const int D5 = 14;
 const int D6 = 12;
 const int D7 = 13;
@@ -45,7 +44,6 @@ String statusD0 = "off";
 String statusD1 = "off";
 String statusD2 = "off";
 String statusD3 = "off";
-String statusD4 = "off";
 String statusD5 = "off";
 String statusD6 = "off";
 String statusD7 = "off";
@@ -67,7 +65,6 @@ void setup() {
   pinMode(D1, OUTPUT);
   pinMode(D2, OUTPUT);
   pinMode(D3, OUTPUT);
-  //pinMode(D4, OUTPUT);
   pinMode(D5, OUTPUT);
   pinMode(D6, OUTPUT);
   pinMode(D7, OUTPUT);
@@ -109,10 +106,9 @@ void loop(){
       if (currentLine.length() == 0) {
         /*
            checking if header is valid
-           dXNlcjpwYXNz = 'user:pass' (user:pass) base64 encode
            Finding the right credential string, then loads web page
         */
-          if(header.indexOf("UHVybmFkaXA6cHVybmFkaXBA") >= 0) // password authentication...
+          if(header.indexOf(userPass) >= 0) // password authentication...
           {
             client.println("HTTP/1.1 200 OK");
             client.println("Content-type:text/html");
@@ -183,21 +179,6 @@ void loop(){
               digitalWrite(D3, LOW);
               statusD3 = "off";
             }
-
-            // Pin D4 (ON/OFF) ----------------------------------------
-//            else if (header.indexOf("GET /on/4") >= 0) {
-//              Serial.println("Turning on PIN : 4");
-//              client.print("ok");
-//              digitalWrite(D4, HIGH);
-//              statusD4 = "on";
-//            }
-//            
-//            else if (header.indexOf("GET /off/4") >= 0) {
-//              Serial.println("Turning off PIN : 4");
-//              client.print("ok");
-//              digitalWrite(D4, LOW);
-//              statusD4 = "off";
-//            }
 
             // Pin D5 (ON/OFF) ----------------------------------------
             else if (header.indexOf("GET /on/5") >= 0) {
@@ -277,10 +258,6 @@ void loop(){
               Serial.println(statusD3);
               client.println(statusD3);
             }
-//            else if (header.indexOf("GET /status/4") >= 0) {
-//              Serial.println(statusD4);
-//              client.println(statusD4);
-//            }
             else if (header.indexOf("GET /status/5") >= 0) {
               Serial.println(statusD5);
               client.println(statusD5);
