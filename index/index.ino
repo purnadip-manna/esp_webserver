@@ -4,9 +4,7 @@
 // Wifi network credentials
 const char* ssid     = "WifiName"; // Name of the wifi
 const char* password = "WifiPassword";  // Password of the wifi
-String userPass = "dXNlcm5hbWU6cGFzc3dvcmQ=";  
-// Base64 encoded string of username:password (For Basic Auth)
-// https://www.base64encode.org/ from here we can encode "username:password"
+String userPass = "dXNlcm5hbWU6cGFzc3dvcmQ=";  // Base64 encoded string of username:password (For Basic Auth)
 
 // Set web server port number to 80
 WiFiServer server(80);
@@ -86,6 +84,7 @@ void setup() {
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
   server.begin();
+  
 }
 
 void loop(){

@@ -15,3 +15,5 @@ We have to make a get request on `http://esp8266_ipaddress/off/<pin_no>`
 
 ## To Check the status of a pin
 We have to make a get request on `http://esp8266_ipaddress/status/<pin_no>`
+
+## Implementing Basic Auth
