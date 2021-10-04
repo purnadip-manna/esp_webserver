@@ -4,7 +4,9 @@
 // Wifi network credentials
 const char* ssid     = "WifiName"; // Name of the wifi
 const char* password = "WifiPassword";  // Password of the wifi
-String userPass = "dXNlcm5hbWU6cGFzc3dvcmQ=";  // Base64 encoded string of username:password (For Basic Auth)
+String userPass = "dXNlcm5hbWU6cGFzc3dvcmQ=";  
+// Base64 encoded string of username:password (For Basic Auth)
+// https://www.base64encode.org/ from here we can encode "username:password"
 
 // Set web server port number to 80
 WiFiServer server(80);
